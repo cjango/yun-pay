@@ -3,6 +3,7 @@
 namespace AsLong\YunPay\Account;
 
 use AsLong\YunPay\Kernel\BaseClient;
+use AsLong\YunPay\Kernel\Routers;
 
 class Client extends BaseClient
 {
@@ -15,7 +16,13 @@ class Client extends BaseClient
      */
     public function balance()
     {
-        return $this->client->get('api/payment/v1/query-accounts');
+        return $this->client->get(Routers::QUERY_BALANCE, [
+            'mess'      => uniqid(),
+            'sign_type' => 'sha256',
+            'timestamp' => time(),
+            'data'      => '',
+            'sign'      => '',
+        ]);
     }
 
 }

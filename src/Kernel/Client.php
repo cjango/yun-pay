@@ -2,29 +2,29 @@
 
 namespace AsLong\YunPay\Kernel;
 
-use Pimple\Container;
-use Pimple\ServiceProviderInterface;
 use GuzzleHttp\Client as GuzzleHttp;
+use Pimple\Container;
 
 class Client
 {
 
     protected $client;
 
-    public function __construct()
+    public function __construct(Container $app)
     {
         $this->client = new GuzzleHttp([
-            'base_uri' => 'https://api-jiesuan.yunzhanghu.com',
+            'base_uri' => Routers::SERVICE_URL,
             'headers'  => [
-                'Content-Type' => 'application/json',
+                'dealer-id'  => $app['config']->get('dealer-id'),
+                'request-id' => uniqid(),
             ],
             'timeout'  => 5.0,
         ]);
     }
 
-    public function get($uri)
+    public function get($uri, array $query = [])
     {
-        return $this->client->get($uri)->getBody()->getContents();
+        return $this->client->get($uri, ['query' => $query])->getBody()->getContents();
     }
 
 }
