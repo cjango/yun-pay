@@ -21,19 +21,18 @@ class Client extends BaseClient
      * @param null $notify_url
      * @return mixed
      */
-    public function realtime($order_id, $real_name, $card_no, $id_card, $pay, $pay_remark = '', $notify_url = null)
+    public function realtime($order_id, $real_name, $id_card, $card_no, $pay, $pay_remark = '', $notify_url = null)
     {
         $data = [
-            'order_id'  => $order_id,
-            'dealer_id' => $this->app->config->get('dealer_id'),
-            'broker_id' => $this->app->config->get('broker_id'),
-
+            'order_id'   => $order_id,
+            'dealer_id'  => $this->app->config->get('dealer_id'),
+            'broker_id'  => $this->app->config->get('broker_id'),
             'real_name'  => $real_name,
             'card_no'    => $card_no,
             'id_card'    => $id_card,
             'pay'        => $pay,
             'pay_remark' => $pay_remark,
-            'notify_url' => $notify_url,
+            'notify_url' => $notify_url ?: $this->app->config->get('notify_url'),
         ];
 
         return $this->client->post(Routers::BANK_CARD, $data);
@@ -53,20 +52,19 @@ class Client extends BaseClient
      * @param null $notify_url
      * @return mixed
      */
-    public function alipay($order_id, $real_name, $card_no, $id_card, $pay, $check_name = 'NoCheck', $pay_remark = '', $notify_url = null)
+    public function alipay($order_id, $real_name, $id_card, $card_no, $pay, $check_name = 'NoCheck', $pay_remark = '', $notify_url = null)
     {
         $data = [
-            'order_id'  => $order_id,
-            'dealer_id' => $this->app->config->get('dealer_id'),
-            'broker_id' => $this->app->config->get('broker_id'),
-
+            'order_id'   => $order_id,
+            'dealer_id'  => $this->app->config->get('dealer_id'),
+            'broker_id'  => $this->app->config->get('broker_id'),
             'real_name'  => $real_name,
             'id_card'    => $id_card,
             'card_no'    => $card_no,
             'pay'        => $pay,
             'pay_remark' => $pay_remark,
             'check_name' => $check_name,
-            'notify_url' => $notify_url,
+            'notify_url' => $notify_url ?: $this->app->config->get('notify_url'),
         ];
 
         return $this->client->post(Routers::ALI_PAY, $data);
@@ -84,23 +82,24 @@ class Client extends BaseClient
      * @param string $notes
      * @param string $pay_remark
      * @param null $notify_url
+     * @param string $mode
      * @return mixed
      */
-    public function wxpay($order_id, $real_name, $openid, $id_card, $pay, $notes = '', $pay_remark = '', $notify_url = null)
+    public function wxpay($order_id, $real_name, $id_card, $openid, $pay, $notes = '', $pay_remark = '', $notify_url = null, $mode = 'transfer')
     {
         $data = [
-            'order_id'  => $order_id,
-            'dealer_id' => $this->app->config->get('dealer_id'),
-            'broker_id' => $this->app->config->get('broker_id'),
-
+            'order_id'   => $order_id,
+            'dealer_id'  => $this->app->config->get('dealer_id'),
+            'broker_id'  => $this->app->config->get('broker_id'),
             'real_name'  => $real_name,
             'id_card'    => $id_card,
             'openid'     => $openid,
             'pay'        => $pay,
             'notes'      => $notes,
             'pay_remark' => $pay_remark,
-            'notify_url' => $notify_url,
+            'notify_url' => $notify_url ?: $this->app->config->get('notify_url'),
             'wx_app_id'  => $this->app->config->get('wx_app_id'),
+            'wxpay_mode' => $mode,
         ];
 
         return $this->client->post(Routers::WX_PAY, $data);
