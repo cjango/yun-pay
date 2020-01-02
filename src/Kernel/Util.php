@@ -49,7 +49,7 @@ class Util
             throw new YunPayException(openssl_error_string());
         }
 
-        return $ret;
+        return json_decode($ret, true);
     }
 
 }

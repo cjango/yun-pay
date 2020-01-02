@@ -2,6 +2,7 @@
 
 namespace AsLong\YunPay;
 
+use Closure;
 use Illuminate\Support\Collection;
 use Pimple\Container;
 
@@ -46,6 +47,18 @@ class Application extends Container
     public function __get($name)
     {
         return $this[$name];
+    }
+
+    /**
+     * Notes: 处理通知
+     * @Author: <C.Jason>
+     * @Date: 2020/1/2 4:05 下午
+     * @param Closure $closure
+     * @return mixed
+     */
+    public function notify(Closure $closure)
+    {
+        return (new Notify\Paid($this))->handle($closure);
     }
 
 }

@@ -2,6 +2,10 @@
 
 ## 1.安装
 
+> $ composer require aslong/yun-pay
+
+> php artisan vendor:publish  --provider="AsLong\YunPay\ServiceProvider"
+
 ## 2.使用
 
 ```php
@@ -31,4 +35,18 @@ $app->data->record($begin_at, $end_at);
 $app->invoice->stat($year);
 
 $app->invoice->stat($year);
+```
+
+## 通知处理
+```php
+<?php
+
+$app = app('yun_pay');
+
+return $app->notify(function($message, $fail) {
+    dd($message);
+    return true;
+    $fail('失败');
+
+});
 ```
