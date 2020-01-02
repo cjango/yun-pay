@@ -1,6 +1,6 @@
 <?php
 
-namespace AsLong\YunPay\Balance;
+namespace AsLong\YunPay\Account;
 
 use AsLong\YunPay\Kernel\BaseClient;
 
@@ -13,7 +13,7 @@ class Client extends BaseClient
      * @Date: 2020/1/2 11:09 上午
      * @return mixed
      */
-    public function get()
+    public function balance()
     {
         return $this->client->get('api/payment/v1/query-accounts');
     }
