@@ -20,7 +20,7 @@ class Client extends BaseClient
             "dealer_id" => $this->app['config']->get('dealer_id'),
         ];
 
-        return $this->client->get(Routers::QUERY_BALANCE, $data);
+        return $this->client->get(Routers::QUERY_ACCOUNTS, $data);
     }
 
 }

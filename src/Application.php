@@ -14,8 +14,10 @@ class Application extends Container
     protected $providers = [
         Kernel\ServiceProvider::class,
         Auth\ServiceProvider::class,
+        Data\ServiceProvider::class,
         Order\ServiceProvider::class,
         Account\ServiceProvider::class,
+        Invoice\ServiceProvider::class,
     ];
 
     /**

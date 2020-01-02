@@ -6,12 +6,6 @@ class Routers
 {
 
     const SERVICE_URL = 'https://api-jiesuan.yunzhanghu.com';
-
-    /**
-     * 余额查询
-     */
-    const QUERY_BALANCE = 'api/payment/v1/query-accounts';
-
     //+----------------------------------
     //|  打款接⼝
     //+----------------------------------

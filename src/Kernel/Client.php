@@ -57,7 +57,7 @@ class Client
 
     private function params($data)
     {
-        $config    = $this->app['config'];
+        $config    = $this->app->config;
         $mess      = uniqid();
         $data      = $this->app->util->encrypt($data);
         $timestamp = time();
