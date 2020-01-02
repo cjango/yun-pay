@@ -13,7 +13,9 @@ class Application extends Container
      */
     protected $providers = [
         Kernel\ServiceProvider::class,
-        Balance\ServiceProvider::class,
+        Auth\ServiceProvider::class,
+        Order\ServiceProvider::class,
+        Account\ServiceProvider::class,
     ];
 
     /**

@@ -16,13 +16,11 @@ class Client extends BaseClient
      */
     public function balance()
     {
-        return $this->client->get(Routers::QUERY_BALANCE, [
-            'mess'      => uniqid(),
-            'sign_type' => 'sha256',
-            'timestamp' => time(),
-            'data'      => '',
-            'sign'      => '',
-        ]);
+        $data = [
+            "dealer_id" => $this->app['config']->get('dealer_id'),
+        ];
+
+        return $this->client->get(Routers::QUERY_BALANCE, $data);
     }
 
 }

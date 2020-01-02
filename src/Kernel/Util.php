@@ -27,13 +27,13 @@ class Util
     {
         $signStr = urldecode(http_build_query($signData));
 
-        return hash_hmac($al, $signStr, $this->config->app_key);
+        return hash_hmac($al, $signStr, $this->config->get('app_key'));
     }
 
     public function encrypt($value)
     {
-        $iv  = substr($this->config->des3key, 0, 8);
-        $ret = openssl_encrypt($value, 'DES-EDE3-CBC', $this->config->des3key, 0, $iv);
+        $iv  = substr($this->config->get('des3_key'), 0, 8);
+        $ret = openssl_encrypt(json_encode($value), 'DES-EDE3-CBC', $this->config->get('des3_key'), 0, $iv);
         if (false === $ret) {
             throw new YunPayException(openssl_error_string());
         }
@@ -43,8 +43,8 @@ class Util
 
     public function decrypt($value)
     {
-        $iv  = substr($this->config->des3key, 0, 8);
-        $ret = openssl_decrypt($value, 'DES-EDE3-CBC', $this->config->des3key, 0, $iv);
+        $iv  = substr($this->config->get('des3_key'), 0, 8);
+        $ret = openssl_decrypt($value, 'DES-EDE3-CBC', $this->config->get('des3_key'), 0, $iv);
         if (false === $ret) {
             throw new YunPayException(openssl_error_string());
         }
