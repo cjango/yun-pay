@@ -1,0 +1,32 @@
+{
+    "name": "aslong/yun-pay",
+    "description": "云账户管理",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "C.Jason",
+            "email": "chenjxlg@163.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.1.3",
+        "pimple/pimple": "^3.0",
+        "guzzlehttp/guzzle": "^6.3",
+        "laravel/framework": "*"
+    },
+    "autoload": {
+        "psr-0": {
+            "AsLong\\YunPay": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "AsLong\\YunPay\\ServiceProvider"
+            ],
+            "aliases": {
+                "Address": "AsLong\\YunPay\\Facade"
+            }
+        }
+    }
+}
