@@ -12,16 +12,24 @@ class Client extends BaseClient
      * Notes: 银行卡实时下单
      * @Author: <C.Jason>
      * @Date: 2020/1/2 2:30 下午
-     * @param $order_id
-     * @param $real_name
-     * @param $card_no
-     * @param $id_card
-     * @param $pay
+     * @param string $order_id
+     * @param string $real_name
+     * @param string $id_card
+     * @param string $card_no
+     * @param float $pay
      * @param string $pay_remark
-     * @param null $notify_url
+     * @param string $notify_url
      * @return mixed
      */
-    public function realtime($order_id, $real_name, $id_card, $card_no, $pay, $pay_remark = '', $notify_url = null)
+    public function realtime(
+        string $order_id,
+        string $real_name,
+        string $id_card,
+        string $card_no,
+        float $pay,
+        string $pay_remark = '',
+        string $notify_url = null
+    )
     {
         $data = [
             'order_id'   => $order_id,
@@ -30,7 +38,7 @@ class Client extends BaseClient
             'real_name'  => $real_name,
             'card_no'    => $card_no,
             'id_card'    => $id_card,
-            'pay'        => $pay,
+            'pay'        => (string)$pay,
             'pay_remark' => $pay_remark,
             'notify_url' => $notify_url ?: $this->app->config->get('notify_url'),
         ];
@@ -42,17 +50,26 @@ class Client extends BaseClient
      * Notes: 支付宝付款
      * @Author: <C.Jason>
      * @Date: 2020/1/2 2:38 下午
-     * @param $order_id
-     * @param $real_name
-     * @param $card_no
-     * @param $id_card
-     * @param $pay
+     * @param string $order_id
+     * @param string $real_name
+     * @param string $id_card
+     * @param string $card_no
+     * @param float $pay
      * @param string $check_name
      * @param string $pay_remark
-     * @param null $notify_url
+     * @param string $notify_url
      * @return mixed
      */
-    public function alipay($order_id, $real_name, $id_card, $card_no, $pay, $check_name = 'NoCheck', $pay_remark = '', $notify_url = null)
+    public function alipay(
+        string $order_id,
+        string $real_name,
+        string $id_card,
+        string $card_no,
+        float $pay,
+        string $check_name = 'NoCheck',
+        string $pay_remark = '',
+        string $notify_url = null
+    )
     {
         $data = [
             'order_id'   => $order_id,
@@ -61,7 +78,7 @@ class Client extends BaseClient
             'real_name'  => $real_name,
             'id_card'    => $id_card,
             'card_no'    => $card_no,
-            'pay'        => $pay,
+            'pay'        => (string)$pay,
             'pay_remark' => $pay_remark,
             'check_name' => $check_name,
             'notify_url' => $notify_url ?: $this->app->config->get('notify_url'),
@@ -74,18 +91,30 @@ class Client extends BaseClient
      * Notes: 微信付款
      * @Author: <C.Jason>
      * @Date: 2020/1/2 2:38 下午
-     * @param $order_id
-     * @param $real_name
-     * @param $openid
-     * @param $id_card
-     * @param $pay
+     * @param string $order_id
+     * @param string $real_name
+     * @param string $id_card
+     * @param string $openid
+     * @param float $pay
+     * @param string $app_id
      * @param string $notes
      * @param string $pay_remark
-     * @param null $notify_url
+     * @param string $notify_url
      * @param string $mode
      * @return mixed
      */
-    public function wxpay($order_id, $real_name, $id_card, $openid, $pay, $notes = '', $pay_remark = '', $notify_url = null, $mode = 'transfer')
+    public function wxpay(
+        string $order_id,
+        string $real_name,
+        string $id_card,
+        string $openid,
+        float $pay,
+        string $app_id = null,
+        string $notes = '',
+        string $pay_remark = '',
+        string $notify_url = null,
+        string $mode = 'transfer'
+    )
     {
         $data = [
             'order_id'   => $order_id,
@@ -94,11 +123,11 @@ class Client extends BaseClient
             'real_name'  => $real_name,
             'id_card'    => $id_card,
             'openid'     => $openid,
-            'pay'        => $pay,
+            'pay'        => (string)$pay,
             'notes'      => $notes,
             'pay_remark' => $pay_remark,
             'notify_url' => $notify_url ?: $this->app->config->get('notify_url'),
-            'wx_app_id'  => $this->app->config->get('wx_app_id'),
+            'wx_app_id'  => $app_id ?: $this->app->config->get('wx_app_id'),
             'wxpay_mode' => $mode,
         ];
 
