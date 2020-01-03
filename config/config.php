@@ -1,23 +1,26 @@
 <?php
 
 return [
-    //云账户key(云账户提供)
-    'app_key'    => '',
 
-    //DES加密串(云账户提供)
-    'des3_key'   => '',
+    'accounts' => [
+        'default' => [
+            'app_key'    => env('YUN_PAY_APP_KEY', null),
+            'des3_key'   => env('YUN_PAY_DES3_KEY', null),
+            'dealer_id'  => env('YUN_PAY_DEALER_ID', null),
+            'broker_id'  => env('YUN_PAY_BROKER_ID', null),
+            'notify_url' => env('YUN_PAY_NOTIFY_URL', null),
+            'wx_app_id'  => env('YUN_PAY_WX_APP_ID', null),
+        ],
 
-    //商户代码(云账户提供)
-    'dealer_id'  => '',
-
-    //代征主体(云账户提供)
-    'broker_id'  => '',
-
-    //回调地址
-    'notify_url' => '',
-
-    //微信app_id
-    'wx_app_id'  => '',
+        'other' => [
+            'app_key'    => env('YUN_PAY_APP_KEY', null),
+            'des3_key'   => env('YUN_PAY_DES3_KEY', null),
+            'dealer_id'  => env('YUN_PAY_DEALER_ID', null),
+            'broker_id'  => env('YUN_PAY_BROKER_ID', null),
+            'notify_url' => env('YUN_PAY_NOTIFY_URL', null),
+            'wx_app_id'  => env('YUN_PAY_WX_APP_ID', null),
+        ]
+    ],
 
     'status' => [
         -1 => ['删除', '被标记为删除的订单，只有通过web⻚⾯打款的情况才会出现（最终状态，不会回调），api接⼝打款不会出现此状态'],
