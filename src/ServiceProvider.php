@@ -18,15 +18,21 @@ class ServiceProvider extends LaravelServiceProvider
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'yun_pay');
 
-        $config = config('yun_pay');
+        $accounts = config('yun_pay.accounts');
 
-        $this->app->singleton("yun_pay", function ($laravelApp) use ($config) {
-            $app = new Application($config);
+        foreach ($accounts as $name => $config) {
+            if ($name != 'default') {
+                $name = 'yun_pay.' . $name;
+            } else {
+                $name = 'yun_pay';
+            }
+            $this->app->singleton($name, function ($laravelApp) use ($config) {
+                $app            = new Application($config);
+                $app['request'] = $laravelApp['request'];
 
-            $app['request'] = $laravelApp['request'];
-
-            return $app;
-        });
+                return $app;
+            });
+        }
     }
 
 }
