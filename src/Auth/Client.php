@@ -16,7 +16,7 @@ class Client extends BaseClient
      * @param $realName
      * @return mixed
      */
-    public function idCard($cardNo, $realName)
+    public function idCard(string $cardNo, string $realName)
     {
         $data = [
             'id_card'   => $cardNo,
@@ -36,8 +36,12 @@ class Client extends BaseClient
      * @param $mobile
      * @return mixed
      */
-    public function request($cardNo, $idCard, $realName, $mobile)
-    {
+    public function request(
+        string $cardNo,
+        string $idCard,
+        string $realName,
+        string $mobile
+    ) {
         $data = [
             'card_no'   => $cardNo,
             'id_card'   => $idCard,
@@ -60,8 +64,14 @@ class Client extends BaseClient
      * @param $captcha
      * @return mixed
      */
-    public function confirm($cardNo, $idCard, $realName, $mobile, $ref, $captcha)
-    {
+    public function confirm(
+        string $cardNo,
+        string $idCard,
+        string $realName,
+        string $mobile,
+        string $ref,
+        string $captcha
+    ) {
         $data = [
             'card_no'   => $cardNo,
             'id_card'   => $idCard,
@@ -84,8 +94,12 @@ class Client extends BaseClient
      * @param $mobile
      * @return mixed
      */
-    public function bankcard_four($cardNo, $idCard, $realName, $mobile)
-    {
+    public function bankcard_four(
+        string $cardNo,
+        string $idCard,
+        string $realName,
+        string $mobile
+    ) {
         $data = [
             'card_no'   => $cardNo,
             'id_card'   => $idCard,
@@ -105,8 +119,11 @@ class Client extends BaseClient
      * @param $realName
      * @return mixed
      */
-    public function bankcard_three($cardNo, $idCard, $realName)
-    {
+    public function bankcard_three(
+        string $cardNo,
+        string $idCard,
+        string $realName
+    ) {
         $data = [
             'card_no'   => $cardNo,
             'id_card'   => $idCard,

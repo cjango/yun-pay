@@ -13,12 +13,12 @@ class Application extends Container
      * @var array
      */
     protected $providers = [
-        Kernel\ServiceProvider::class,
+        Account\ServiceProvider::class,
         Auth\ServiceProvider::class,
         Data\ServiceProvider::class,
-        Order\ServiceProvider::class,
-        Account\ServiceProvider::class,
         Invoice\ServiceProvider::class,
+        Kernel\ServiceProvider::class,
+        Order\ServiceProvider::class,
     ];
 
     /**
@@ -26,10 +26,8 @@ class Application extends Container
      * @param array $config
      * @param array $values
      */
-    public function __construct($config = [], array $values = [])
+    public function __construct(array $config = [], array $values = [])
     {
-        parent::__construct($values);
-
         $this['config'] = function () use ($config) {
             return new Collection($config);
         };

@@ -40,7 +40,7 @@ class Paid
         return $this->toResponse();
     }
 
-    function toResponse()
+    protected function toResponse()
     {
         return is_null($this->fail) ? static::SUCCESS : static::FAIL;
     }
@@ -48,7 +48,7 @@ class Paid
     /**
      * Return the notify message from request.
      */
-    public function getMessage(): array
+    protected function getMessage(): array
     {
         if (!empty($this->message)) {
             return $this->message;
@@ -72,7 +72,7 @@ class Paid
     /**
      * @param string $message
      */
-    public function fail(string $message)
+    protected function fail(string $message)
     {
         $this->fail = $message;
     }

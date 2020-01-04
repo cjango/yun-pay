@@ -15,7 +15,7 @@ class Client extends BaseClient
      * @param $date
      * @return mixed
      */
-    public function order($date)
+    public function order(string $date)
     {
         $data = [
             'order_date' => $date,
@@ -31,7 +31,7 @@ class Client extends BaseClient
      * @param $date
      * @return mixed
      */
-    public function bill($date)
+    public function bill(string $date)
     {
         $data = [
             'bill_date' => $date,
@@ -48,7 +48,7 @@ class Client extends BaseClient
      * @param $end_at
      * @return mixed
      */
-    function record($begin_at, $end_at)
+    public function record(string $begin_at, string $end_at)
     {
         $data = [
             'begin_at' => $begin_at,

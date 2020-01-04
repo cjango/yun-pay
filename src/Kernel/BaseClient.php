@@ -2,6 +2,7 @@
 
 namespace AsLong\YunPay\Kernel;
 
+use Pimple\Container;
 
 class BaseClient
 {
@@ -21,7 +22,7 @@ class BaseClient
      *
      * @param
      */
-    public function __construct($app)
+    public function __construct(Container $app)
     {
         $this->app    = $app;
         $this->client = $this->app->client;

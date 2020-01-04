@@ -29,8 +29,7 @@ class Client extends BaseClient
         float $pay,
         string $pay_remark = '',
         string $notify_url = null
-    )
-    {
+    ) {
         $data = [
             'order_id'   => $order_id,
             'dealer_id'  => $this->app->config->get('dealer_id'),
@@ -38,7 +37,7 @@ class Client extends BaseClient
             'real_name'  => $real_name,
             'card_no'    => $card_no,
             'id_card'    => $id_card,
-            'pay'        => (string)$pay,
+            'pay'        => (string) $pay,
             'pay_remark' => $pay_remark,
             'notify_url' => $notify_url ?: $this->app->config->get('notify_url'),
         ];
@@ -69,8 +68,7 @@ class Client extends BaseClient
         string $check_name = 'NoCheck',
         string $pay_remark = '',
         string $notify_url = null
-    )
-    {
+    ) {
         $data = [
             'order_id'   => $order_id,
             'dealer_id'  => $this->app->config->get('dealer_id'),
@@ -78,7 +76,7 @@ class Client extends BaseClient
             'real_name'  => $real_name,
             'id_card'    => $id_card,
             'card_no'    => $card_no,
-            'pay'        => (string)$pay,
+            'pay'        => (string) $pay,
             'pay_remark' => $pay_remark,
             'check_name' => $check_name,
             'notify_url' => $notify_url ?: $this->app->config->get('notify_url'),
@@ -114,8 +112,7 @@ class Client extends BaseClient
         string $pay_remark = '',
         string $notify_url = null,
         string $mode = 'transfer'
-    )
-    {
+    ) {
         $data = [
             'order_id'   => $order_id,
             'dealer_id'  => $this->app->config->get('dealer_id'),
@@ -123,7 +120,7 @@ class Client extends BaseClient
             'real_name'  => $real_name,
             'id_card'    => $id_card,
             'openid'     => $openid,
-            'pay'        => (string)$pay,
+            'pay'        => (string) $pay,
             'notes'      => $notes,
             'pay_remark' => $pay_remark,
             'notify_url' => $notify_url ?: $this->app->config->get('notify_url'),
@@ -142,7 +139,7 @@ class Client extends BaseClient
      * @param string $channel 银行卡，⽀支付宝，微信(不不填时为银行卡订 单查询)(选填)
      * @return mixed
      */
-    public function cancel(string $order_id, $channel = '银行卡')
+    public function cancel(string $order_id, string $channel = '银行卡')
     {
         $data = [
             'dealer_id' => $this->app->config->get('dealer_id'),
@@ -162,7 +159,7 @@ class Client extends BaseClient
      * @param string $channel 银行卡，⽀支付宝，微信(不不填时为银行卡订 单查询)(选填)
      * @return mixed
      */
-    public function query(string $order_id, $channel = '银行卡')
+    public function query(string $order_id, string $channel = '银行卡')
     {
         $data = [
             'order_id'  => $order_id,
