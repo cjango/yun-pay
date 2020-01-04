@@ -18,6 +18,11 @@ class BaseClient
     protected $client;
 
     /**
+     * @var
+     */
+    protected $config;
+
+    /**
      * Client constructor.
      *
      * @param
@@ -26,6 +31,7 @@ class BaseClient
     {
         $this->app    = $app;
         $this->client = $this->app->client;
+        $this->config = $this->app->config;
     }
 
 }

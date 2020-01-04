@@ -18,8 +18,8 @@ class Client extends BaseClient
     public function stat(string $year)
     {
         $data = [
-            'dealer_id' => $this->app->config->get('dealer_id'),
-            'broker_id' => $this->app->config->get('broker_id'),
+            'dealer_id' => $this->config->get('dealer_id'),
+            'broker_id' => $this->config->get('broker_id'),
             'year'      => $year,
         ];
 

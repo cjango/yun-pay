@@ -7,7 +7,7 @@ class Routers
 
     const SERVICE_URL = 'https://api-jiesuan.yunzhanghu.com';
     //+----------------------------------
-    //|  打款接⼝
+    //|  打款接口
     //+----------------------------------
     /**
      * 支付提交地址
@@ -33,22 +33,22 @@ class Routers
     const ORDER_FAIL = 'api/payment/v1/order/fail';
 
     //+----------------------------------
-    //| 税务⻛控
+    //| 税务风控
     //+----------------------------------
     /**
-     * 查看⽤户打款⾦额是否超出全⽹⽉限额
+     * 查看用户打款金额是否超出限额
      *
      */
     const RISK_CHECK_AMOUNT = 'api/payment/v1/risk-check/amount';
     //+----------------------------------
-    //| 数据接⼝
+    //| 数据接口
     //+----------------------------------
     /**
-     * 查询⽇订单⽂件
+     * 查询日订单文件
      */
     const ORDER_DOWNLOAD = 'api/dataservice/v1/order/downloadurl';
     /**
-     * 查询⽇流⽔⽂
+     * 查询日流水文件
      */
     const BILL_DOWNLOAD = 'api/dataservice/v2/bill/downloadurl';
     /**
@@ -56,22 +56,22 @@ class Routers
      */
     const RECHARGE_RECORD = 'api/dataservice/v2/rechargerecord';
     //+----------------------------------
-    //|  ⽤户信息验证接⼝
+    //|  用户信息验证接口
     //+----------------------------------
     /**
-     * 银⾏卡四要素请求鉴权（下发短信验证码）
+     * 银行卡四要素请求鉴权（下发短信验证码）
      */
     const VERIFY_REQUEST = 'authentication/verify-request';
     /**
-     * 银⾏卡四要素确认鉴权（上传短信验证码）
+     * 银行卡四要素确认鉴权（上传短信验证码）
      */
     const VERIFY_CONFIRM = 'authentication/verify-confirm';
     /**
-     * 银⾏卡四要素验证
+     * 银行卡四要素验证
      */
     const VERIFY_BANKCARD_FOUR_FACTOR = 'authentication/verify-bankcard-four-factor';
     /**
-     * 银⾏卡三要素验证
+     * 银行卡三要素验证
      */
     const VERIFY_BANKCARD_THREE_FACTOR = 'authentication/verify-bankcard-three-factor';
     /**
@@ -79,25 +79,25 @@ class Routers
      */
     const VERIFY_ID = 'authentication/verify-id';
     /**
-     * 查看⽤户⽩名单是否存在
+     * 查看用户白名单是否存在
      */
     const USER_WHITE_CHECK = 'api/payment/v1/user/white/check';
     //+----------------------------------
-    //|  ⽤户签约接⼝
+    //|  用户签约接口
     //+----------------------------------
     /**
-     * ⽤户签约信息上传
+     * 用户签约信息上传
      */
     const SIGN_USER = 'api/payment/v1/sign/user';
     /**
-     * 获取⽤户签约状态
+     * 获取用户签约状态
      */
     const SIGN_USER_STATUS = 'api/payment/v1/sign/user/status';
     //+----------------------------------
-    //|  发票接⼝
+    //|  发票接口
     //+----------------------------------
     /**
-     * 查询商户已开具发票⾦额和待开具发票⾦额
+     * 查询商户已开具发票金额和待开具发票金额
      */
     const INVOICE_STAT = 'api/payment/v1/invoice-stat';
 

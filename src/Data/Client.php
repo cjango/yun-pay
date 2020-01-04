@@ -9,7 +9,7 @@ class Client extends BaseClient
 {
 
     /**
-     * Notes: 查询⽇日订单⽂文件
+     * Notes: 查询日订单文件
      * @Author: <C.Jason>
      * @Date: 2020/1/2 2:49 下午
      * @param $date
@@ -25,7 +25,7 @@ class Client extends BaseClient
     }
 
     /**
-     * Notes: 查询⽇日流⽔水⽂文件
+     * Notes: 查询日流水文件
      * @Author: <C.Jason>
      * @Date: 2020/1/2 2:49 下午
      * @param $date

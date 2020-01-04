@@ -17,7 +17,7 @@ class Client extends BaseClient
     public function balance()
     {
         $data = [
-            "dealer_id" => $this->app->config->get('dealer_id'),
+            "dealer_id" => $this->config->get('dealer_id'),
         ];
 
         return $this->client->get(Routers::QUERY_ACCOUNTS, $data);
