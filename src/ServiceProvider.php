@@ -10,7 +10,7 @@ class ServiceProvider extends LaravelServiceProvider
     public function boot()
     {
         if ($this->app->runningInConsole()) {
-            $this->publishes([__DIR__ . '/../config/config.php' => config_path('yun_pay.php')]);
+            $this->publishes([__DIR__ . '/../config/config.php' => config_path('yun_pay.php')], 'yun_pay');
         }
     }
 
@@ -26,13 +26,20 @@ class ServiceProvider extends LaravelServiceProvider
             } else {
                 $name = 'yun_pay';
             }
-            $this->app->singleton($name, function ($laravelApp) use ($config) {
-                $app            = new Application($config);
-                $app['request'] = $laravelApp['request'];
+            if ($config['app_key']) {
+                $this->app->singleton($name, function ($laravelApp) use ($config) {
+                    $app            = new Application($config);
+                    $app['request'] = $laravelApp['request'];
 
-                return $app;
-            });
+                    return $app;
+                });
+            }
         }
+    }
+
+    public function provides()
+    {
+        return [Application::class];
     }
 
 }
