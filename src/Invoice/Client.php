@@ -9,13 +9,13 @@ class Client extends BaseClient
 {
 
     /**
-     * Notes: 查询⽇日订单⽂文件
+     * Notes: 查询发票状态
      * @Author: <C.Jason>
      * @Date: 2020/1/2 2:49 下午
-     * @param $year
+     * @param int $year
      * @return mixed
      */
-    public function stat($year)
+    public function stat(int $year)
     {
         $data = [
             'dealer_id' => $this->app->config->get('dealer_id'),
