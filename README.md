@@ -16,7 +16,7 @@ $app = app('yun_pay');
 // 查询余额
 $app->account->balance();
 // 查询一条订单
-$app->order->query($order_id, $channel = '银⾏卡');
+$app->order->query($order_id, $channel = '银行卡');
 // 银行卡下单
 $app->order->realtime();
 $app->order->alipay();

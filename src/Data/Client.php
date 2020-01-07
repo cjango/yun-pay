@@ -9,13 +9,13 @@ class Client extends BaseClient
 {
 
     /**
-     * Notes: 查询⽇日订单⽂文件
+     * Notes: 查询日订单文件
      * @Author: <C.Jason>
      * @Date: 2020/1/2 2:49 下午
      * @param $date
      * @return mixed
      */
-    public function order($date)
+    public function order(string $date)
     {
         $data = [
             'order_date' => $date,
@@ -25,13 +25,13 @@ class Client extends BaseClient
     }
 
     /**
-     * Notes: 查询⽇日流⽔水⽂文件
+     * Notes: 查询日流水文件
      * @Author: <C.Jason>
      * @Date: 2020/1/2 2:49 下午
      * @param $date
      * @return mixed
      */
-    public function bill($date)
+    public function bill(string $date)
     {
         $data = [
             'bill_date' => $date,
@@ -48,7 +48,7 @@ class Client extends BaseClient
      * @param $end_at
      * @return mixed
      */
-    function record($begin_at, $end_at)
+    public function record(string $begin_at, string $end_at)
     {
         $data = [
             'begin_at' => $begin_at,

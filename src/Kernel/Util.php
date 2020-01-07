@@ -8,32 +8,46 @@ use Pimple\Container;
 class Util
 {
 
-    protected $config;
+    protected $iv;
+
+    protected $app_key;
+
+    protected $des3_key;
 
     public function __construct(Container $app)
     {
-        $this->config = $app['config'];
+        $config = $app['config'];
+
+        $this->app_key  = $config['app_key'];
+        $this->des3_key = $config['des3_key'];
+        $this->iv       = substr($config['des3_key'], 0, 8);
     }
 
     /**
-     * Notes: data=xxx&mess=xxx&timestamp=xxx&key=appkey
+     * Notes: 接口签名
+     * data=xxx&mess=xxx&timestamp=xxx&key=appkey
      * @Author: <C.Jason>
      * @Date: 2020/1/2 12:23 下午
      * @param array $signData
-     * @param string $al
      * @return string
      */
-    public function hmac(array $signData, string $al = 'sha256'): string
+    public function hmac(array $signData): string
     {
         $signStr = urldecode(http_build_query($signData));
 
-        return hash_hmac($al, $signStr, $this->config->get('app_key'));
+        return hash_hmac('sha256', $signStr, $this->app_key);
     }
 
-    public function encrypt($value)
+    /**
+     * Notes: 数据加密
+     * @Author: <C.Jason>
+     * @Date: 2020/1/2 12:23 下午
+     * @param array $value
+     * @return string
+     */
+    public function encrypt(array $value)
     {
-        $iv  = substr($this->config->get('des3_key'), 0, 8);
-        $ret = openssl_encrypt(json_encode($value), 'DES-EDE3-CBC', $this->config->get('des3_key'), 0, $iv);
+        $ret = openssl_encrypt(json_encode($value), 'DES-EDE3-CBC', $this->des3_key, 0, $this->iv);
         if (false === $ret) {
             throw new YunPayException(openssl_error_string());
         }
@@ -41,10 +55,16 @@ class Util
         return $ret;
     }
 
-    public function decrypt($value)
+    /**
+     * Notes: 数据解密
+     * @Author: <C.Jason>
+     * @Date: 2020/1/2 12:23 下午
+     * @param string $value
+     * @return array
+     */
+    public function decrypt(string $value)
     {
-        $iv  = substr($this->config->get('des3_key'), 0, 8);
-        $ret = openssl_decrypt($value, 'DES-EDE3-CBC', $this->config->get('des3_key'), 0, $iv);
+        $ret = openssl_decrypt($value, 'DES-EDE3-CBC', $this->des3_key, 0, $this->iv);
         if (false === $ret) {
             throw new YunPayException(openssl_error_string());
         }
