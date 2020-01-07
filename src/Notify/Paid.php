@@ -72,7 +72,7 @@ class Paid
     /**
      * @param string $message
      */
-    protected function fail(string $message)
+    public function fail(string $message)
     {
         $this->fail = $message;
     }
